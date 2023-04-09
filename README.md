@@ -22,7 +22,7 @@ https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0
 https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%3A1
 <br>
 <br>
-Ссылка на проект:https://artur766.github.io/mesto-react/</h4>
+Ссылка на проект:https://artur766.github.io/react-mesto-auth/</h4>
 
 <a name="technologies"><h2>2. Стек технологий</h2></a>
 <span>

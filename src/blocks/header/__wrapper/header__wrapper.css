@@ -1,0 +1,11 @@
+.header__wrapper {
+  display: flex;
+  column-gap: 24px;
+}
+
+@media screen and (max-width:900px) {
+  .header__wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}

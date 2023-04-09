@@ -189,7 +189,6 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <CardContext.Provider value={cards}>
         <div className="wrapper">
-
           <Routes>
             <Route path="/" element={
               <>

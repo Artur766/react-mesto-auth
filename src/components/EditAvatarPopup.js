@@ -6,23 +6,20 @@ function EditAvatarPopup(props) {
 
   const { values, errors, isValid, handleChange, reset } = useFormValidation();
 
+  React.useEffect(() => {
+    reset();
+  }, [props.isOpen, props.onClose])
+
   function handleSubmit(e) {
     e.preventDefault();
 
     props.onUpdateAvatar({
       avatar: values["link"],
     });
-
-    reset();
   }
 
-  function errorClassName(name) {
+  function getErrorClassName(name) {
     return `popup__input ${errors[name] && "popup__input_type_error"}`
-  }
-
-  function onClosePopup() {
-    props.onClose();
-    reset();
   }
 
   return (
@@ -32,13 +29,13 @@ function EditAvatarPopup(props) {
       name="avatar"
       buttonName={props.buttonName}
       isOpen={props.isOpen}
-      onClose={onClosePopup}
+      onClose={props.onClose}
       isValid={isValid}
     >
       <input
         value={values["link"] ?? ""}
         onChange={handleChange}
-        className={errorClassName("link")}
+        className={getErrorClassName("link")}
         id="link-avatar"
         name="link"
         type="url"

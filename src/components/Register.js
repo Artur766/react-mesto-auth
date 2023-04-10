@@ -16,18 +16,14 @@ function Register(props) {
     auth.register(values["email"], values["password"])
       .then((res) => {
         if (res.data) {
-          props.handleInfoTooltipСheckmark();
+          props.handleInfoTooltipOpen(true);
           navigate("/sign-in", { replace: true });
         }
       })
-      .catch(() => {
-        if (isValid) {
-          props.handleInfoTooltipCross()
-        }
-      })
+      .catch(() => props.handleInfoTooltipOpen(false))
   }
 
-  function errorClassName(name) {
+  function getErrorClassName(name) {
     return `login__input ${errors[name] && "login__input_type_error"}`
   }
 
@@ -38,7 +34,7 @@ function Register(props) {
         <input
           onChange={handleChange}
           value={values["email"]}
-          className={errorClassName("email")}
+          className={getErrorClassName("email")}
           type="email"
           name="email"
           placeholder="Email"
@@ -48,7 +44,7 @@ function Register(props) {
         <input
           onChange={handleChange}
           value={values["password"]}
-          className={errorClassName("password")}
+          className={getErrorClassName("password")}
           type="password"
           name="password"
           placeholder="Пароль"

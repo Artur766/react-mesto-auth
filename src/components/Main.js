@@ -1,12 +1,10 @@
 import React from "react";
 import Card from "./Card";
-import { CardContext } from "../contexts/CardContext";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main(props) {
 
   const currentUser = React.useContext(CurrentUserContext);
-  const cards = React.useContext(CardContext);
 
   return (
     <main>
@@ -26,7 +24,7 @@ function Main(props) {
         <button className="profile__add-btn" type="button" onClick={props.onAddPlace} />
       </section>
       <section className="elements">
-        {cards.map((item) => (
+        {props.cards.map((item) => (
           <Card
             card={item}
             key={item._id}

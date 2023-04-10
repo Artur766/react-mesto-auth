@@ -19,14 +19,10 @@ function Login(props) {
           navigate("/", { replace: true });
         }
       })
-      .catch(() => {
-        if (isValid) {
-          props.handleInfoTooltipCross();
-        }
-      })
+      .catch(() => props.handleInfoTooltipOpen(false))
   }
 
-  function errorClassName(name) {
+  function getErrorClassName(name) {
     return `login__input ${errors[name] && "login__input_type_error"}`
   }
 
@@ -38,7 +34,7 @@ function Login(props) {
           onChange={handleChange}
           value={values["email"] ?? ""}
           name="email"
-          className={errorClassName("email")}
+          className={getErrorClassName("email")}
           type="email"
           placeholder="Email"
           required
@@ -47,7 +43,7 @@ function Login(props) {
         <input
           onChange={handleChange}
           value={values["password"] ?? ""}
-          className={errorClassName("password")}
+          className={getErrorClassName("password")}
           name="password"
           type="password"
           placeholder="Пароль"

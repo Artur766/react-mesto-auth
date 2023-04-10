@@ -8,10 +8,11 @@ function EditProfilePopup(props) {
   const currentUser = React.useContext(CurrentUserContext);
   const { values, errors, isValid, handleChange, setValue, reset } = useFormValidation();
 
+
   React.useEffect(() => {
     setValue("userName", currentUser.name);
     setValue("about", currentUser.about);
-
+    reset({ "userName": currentUser.name, "about": currentUser.about });
   }, [currentUser, props.isOpen])
 
 
@@ -24,16 +25,10 @@ function EditProfilePopup(props) {
       name: values["userName"],
       about: values["about"],
     });
-    reset({ "userName": currentUser.name, "about": currentUser.about });
   }
 
-  function errorClassName(name) {
+  function getErrorClassName(name) {
     return `popup__input ${errors[name] && "popup__input_type_error"}`
-  }
-
-  function onClosePopup() {
-    props.onClose();
-    reset({ "userName": currentUser.name, "about": currentUser.about });
   }
 
   return (
@@ -43,12 +38,12 @@ function EditProfilePopup(props) {
       name="edit"
       buttonName={props.buttonName}
       isOpen={props.isOpen}
-      onClose={onClosePopup}
+      onClose={props.onClose}
       isValid={isValid}
     >
       <input
         onChange={handleChange}
-        className={errorClassName("userName")}
+        className={getErrorClassName("userName")}
         id="user-name"
         name="userName"
         type="text"
@@ -61,7 +56,7 @@ function EditProfilePopup(props) {
       <span className="popup__error popup__error_visable">{errors["userName"]}</span>
       <input
         onChange={handleChange}
-        className={errorClassName("about")}
+        className={getErrorClassName("about")}
         id="job"
         name="about"
         type="text"

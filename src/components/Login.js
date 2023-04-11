@@ -32,7 +32,7 @@ function Login(props) {
       <form className="login__form" onSubmit={handleSubmit} action="#" noValidate>
         <input
           onChange={handleChange}
-          value={values["email"] ?? ""}
+          value={values["email"] || ''}
           name="email"
           className={getErrorClassName("email")}
           type="email"
@@ -42,7 +42,7 @@ function Login(props) {
         <span className="login__error login__error_visable">{errors["email"]}</span>
         <input
           onChange={handleChange}
-          value={values["password"] ?? ""}
+          value={values["password"] || ''}
           className={getErrorClassName("password")}
           name="password"
           type="password"

@@ -33,7 +33,7 @@ function Register(props) {
       <form className="login__form" onSubmit={handleSubmit} action="#" noValidate>
         <input
           onChange={handleChange}
-          value={values["email"]}
+          value={values["email"] || ''}
           className={getErrorClassName("email")}
           type="email"
           name="email"
@@ -43,7 +43,7 @@ function Register(props) {
         <span className="login__error login__error_visable" >{errors["email"]}</span>
         <input
           onChange={handleChange}
-          value={values["password"]}
+          value={values["password"] || ''}
           className={getErrorClassName("password")}
           type="password"
           name="password"

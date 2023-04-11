@@ -10,10 +10,8 @@ function EditProfilePopup(props) {
 
 
   React.useEffect(() => {
-    setValue("userName", currentUser.name);
-    setValue("about", currentUser.about);
     reset({ "userName": currentUser.name, "about": currentUser.about });
-  }, [currentUser, props.isOpen])
+  }, [currentUser])
 
 
   function handleSubmit(e) {
@@ -51,7 +49,7 @@ function EditProfilePopup(props) {
         required
         minLength="2"
         maxLength="40"
-        value={values["userName"] ?? ""}
+        value={values["userName"] || ''}
       />
       <span className="popup__error popup__error_visable">{errors["userName"]}</span>
       <input
@@ -64,7 +62,7 @@ function EditProfilePopup(props) {
         required
         minLength="2"
         maxLength="20"
-        value={values["about"] ?? ""}
+        value={values["about"] || ''}
       />
       <span className="popup__error popup__error_visable" >{errors["about"]}</span>
     </PopupWithForm>

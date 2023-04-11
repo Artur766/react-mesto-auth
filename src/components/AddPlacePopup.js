@@ -8,7 +8,7 @@ function AddPlacePopup(props) {
 
   React.useEffect(() => {
     reset();
-  }, [props.isOpen, props.onClose])
+  }, [props.isOpen])
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -33,7 +33,7 @@ function AddPlacePopup(props) {
       isValid={isValid}
     >
       <input
-        value={values["name"] ?? ""}
+        value={values["name"] || ''}
         onChange={handleChange}
         className={getErrorClassName("name")}
         id="title-picture"
@@ -46,7 +46,7 @@ function AddPlacePopup(props) {
       />
       <span className="popup__error popup__error_visable title-picture-error">{errors["name"]}</span>
       <input
-        value={values["link"] ?? ""}
+        value={values["link"] || ''}
         onChange={handleChange}
         className={getErrorClassName("link")}
         id="link-picture"

@@ -8,7 +8,7 @@ function EditAvatarPopup(props) {
 
   React.useEffect(() => {
     reset();
-  }, [props.isOpen, props.onClose])
+  }, [props.isOpen])
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -33,7 +33,7 @@ function EditAvatarPopup(props) {
       isValid={isValid}
     >
       <input
-        value={values["link"] ?? ""}
+        value={values["link"] || ''}
         onChange={handleChange}
         className={getErrorClassName("link")}
         id="link-avatar"
